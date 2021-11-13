@@ -20,7 +20,7 @@ cursor = connection.cursor()
 
 # ACTIVITY 1
 # fill list below with all possible commands. look at the functions in the while loop to get index of each command
-possibleCommands = []
+possibleCommands = ["help","add pizza","quit","list pizzas","search pizza","sort list"]
 
 # starting a while loop to iterate through commands
 while True:
@@ -34,7 +34,7 @@ while True:
         # ACTIVITY 2
         # print goodbye message
 
-        print("")
+        print("goodbye!")
         exit()
 
     # checking if command is equal to "help"
@@ -43,8 +43,7 @@ while True:
 
         # ACTIVITY 3
         # write print statement to print all possible commands (find the possibleCommands variable)
-
-        print("")
+        print(possibleCommands)
 
     # checking if command is equal to "list pizzas"
     elif command == possibleCommands[3]:
@@ -52,7 +51,7 @@ while True:
 
         # ACTIVITY 4
         # Please insert list pizza (select) sql command here
-        sql_select_Query = ""
+        sql_select_Query = "SELECT * FROM PizzaRecipes"
 
         cursor.execute(sql_select_Query)
         records = cursor.fetchall()
@@ -73,8 +72,7 @@ while True:
         
         # ACTIVITY 5
         # Please insert add pizza (insert) sql command here
-        sql = ""
-
+        sql = f"INSERT INTO PizzaRecipes VALUES {val}"
         val = ("NULL", NewItemName, NewItemPrice, NewItemDescription)
         cursor.execute(sql, val)
         connection.commit()
